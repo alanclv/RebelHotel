@@ -132,7 +132,7 @@ public class WorkEffortController {
 		Student student = userInformation.getStudent();
 		List<WorkEffort> workEfforts = WorkEffort.findWorkEffortsByStudentEquals(student).getResultList();
 		model.addAttribute("workefforts", workEfforts);
-		return "workefforts/mywork";
+		return "workefforts/personalList";
 	}
 	
 	void addDateTimeFormatPatterns(Model model) {
