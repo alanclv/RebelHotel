@@ -6,6 +6,7 @@
     <br/>
     <br/>
     <form:create id="fc_edu_unlv_cs_rebelhotel_form_FormStudentQuery" modelAttribute="formStudentQuery" path="/students?query" render="${empty dependencies}">
+    	<field:checkbox field="outputCsv" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_outputCsv" />
     	<table>
     		<tr>
     			<td>
@@ -16,6 +17,16 @@
     				<field:checkbox field="useCatalogTerm" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useCatalogTerm" />
     				<field:input field="catalogTerm.termYear" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_catalogTerm_termYear" validationMessageCode="field_invalid_integer" />
         			<field:select field="catalogTerm.semester" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_catalogTerm_semester" items="${query_semesters}" path="semesters" />
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				<field:checkbox field = "useFirstName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useFirstName" />
+					<field:input field = "firstName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_firstName" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "useLastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useLastName" />
+					<field:input field = "lastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_lastName" />
     			</td>
     		</tr>
     		<tr>

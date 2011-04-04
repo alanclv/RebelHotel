@@ -5,24 +5,24 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
 import javax.persistence.Column;
 import javax.persistence.Enumerated;
 import javax.persistence.EnumType;
-import javax.persistence.Transient;
 
 @Configurable("userAccount")
 @RooJavaBean
 @RooToString
-@RooEntity(finders = { "findUserAccountsByUserId" })
+@RooEntity(finders = { "findUserAccountsByUserId", "findUserAccountsByUserIdEquals" })
 public class UserAccount {
 
     @NotNull
     @Column(unique = true)
     private String userId;
+
+    @Column(unique = true)
+    private String email = "default@mail.com";
 
     private transient MessageDigestPasswordEncoder passwordEncoder;
 
@@ -42,7 +42,7 @@ public class UserAccount {
     public void setPasswordEncoder(MessageDigestPasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
-    
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("UserId: ").append(getUserId()).append(", ");

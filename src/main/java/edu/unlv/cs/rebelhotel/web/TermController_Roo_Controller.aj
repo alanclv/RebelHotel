@@ -85,6 +85,30 @@ privileged aspect TermController_Roo_Controller {
         return "redirect:/terms?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
+    @RequestMapping(params = { "find=BySemester", "form" }, method = RequestMethod.GET)
+    public String TermController.findTermsBySemesterForm(Model model) {
+        model.addAttribute("semesters", java.util.Arrays.asList(Semester.class.getEnumConstants()));
+        return "terms/findTermsBySemester";
+    }
+    
+    @RequestMapping(params = "find=BySemester", method = RequestMethod.GET)
+    public String TermController.findTermsBySemester(@RequestParam("semester") Semester semester, Model model) {
+        model.addAttribute("terms", Term.findTermsBySemester(semester).getResultList());
+        return "terms/list";
+    }
+    
+    @RequestMapping(params = { "find=BySemesterAndTermYearEquals", "form" }, method = RequestMethod.GET)
+    public String TermController.findTermsBySemesterAndTermYearEqualsForm(Model model) {
+        model.addAttribute("semesters", java.util.Arrays.asList(Semester.class.getEnumConstants()));
+        return "terms/findTermsBySemesterAndTermYearEquals";
+    }
+    
+    @RequestMapping(params = "find=BySemesterAndTermYearEquals", method = RequestMethod.GET)
+    public String TermController.findTermsBySemesterAndTermYearEquals(@RequestParam("semester") Semester semester, @RequestParam("termYear") Integer termYear, Model model) {
+        model.addAttribute("terms", Term.findTermsBySemesterAndTermYearEquals(semester, termYear).getResultList());
+        return "terms/list";
+    }
+    
     @ModelAttribute("semesters")
     public Collection<Semester> TermController.populateSemesters() {
         return Arrays.asList(Semester.class.getEnumConstants());

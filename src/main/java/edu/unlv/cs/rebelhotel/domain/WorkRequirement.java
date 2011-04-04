@@ -6,10 +6,13 @@ import java.util.Set;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
+
+import edu.unlv.cs.rebelhotel.domain.enums.Departments;
+
 import javax.validation.constraints.NotNull;
-import edu.unlv.cs.rebelhotel.domain.Student;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.ManyToMany;
 @RooJavaBean
@@ -17,8 +20,8 @@ import javax.persistence.ManyToMany;
 @RooEntity
 public class WorkRequirement {
 
-    @NotNull
-    private String name;
+	@NotNull
+	private String name;
 
     private Integer hours;
 
