@@ -1,14 +1,11 @@
 package edu.unlv.cs.rebelhotel.domain;
 
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
-
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -28,7 +25,7 @@ public class RandomValidationBatch {
 	private int		sample_size;
 	private boolean is_completed;
 	
-	@OneToMany(cascade = CascadeType.ALL )
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private Set<Student> students = new HashSet<Student>();
 	
 }

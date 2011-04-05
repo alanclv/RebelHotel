@@ -7,12 +7,10 @@ import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
 
-import edu.unlv.cs.rebelhotel.domain.enums.Departments;
 
 import javax.validation.constraints.NotNull;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.ManyToMany;
 @RooJavaBean
