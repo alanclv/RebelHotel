@@ -49,7 +49,7 @@ public class Student {
 
     private String lastName;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Major> majors = new HashSet<Major>();
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -71,8 +71,7 @@ public class Student {
     private UserAccount userAccount;
     
     @PreUpdate
-    @PrePersist
-    public void onUpdate() {
+    public void updateLastModified() {
     	lastModified = new Date();
     }
     
@@ -84,10 +83,11 @@ public class Student {
     		UserAccount userAccount = findUserAccountsByUserId.getSingleResult();
     		setUserAccount(userAccount);
     	} catch(EmptyResultDataAccessException e) {
-    		RandomPasswordGenerator rpg = new RandomPasswordGenerator();
-    		UserAccount userAccount = new UserAccount(this,rpg.generateRandomPassword());
-    		setUserAccount(userAccount);
+			RandomPasswordGenerator rpg = new RandomPasswordGenerator();
+			UserAccount userAccount = new UserAccount(this,rpg.generateRandomPassword());
+			setUserAccount(userAccount);
     	}
+    	updateLastModified();
     }
 
     public String toString() {
