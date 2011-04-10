@@ -41,6 +41,7 @@ public class DefaultStudentService implements StudentService{
 		List<List<String>> contents = Collections.emptyList();
 		try {
 			contents = lexer.tokenize(new FileReader(file));
+			System.out.println("I am here after tokenizing.");
 		} catch (IOException e) {
 			LOG.error("Could not upload student file", e);
 		}

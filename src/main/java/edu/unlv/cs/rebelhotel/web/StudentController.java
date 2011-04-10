@@ -220,16 +220,6 @@ public class StudentController {
 	}
 	
 	
-	//====================================
-	// Test new view
-	//====================================
-	@RequestMapping(params = "gethere")
-	public String method_name_means_nothing() {
-		; // does nothing special
-		return "students/gethere";
-	}
-	
-	
 	@RequestMapping(params = "query", method = RequestMethod.GET)
 	public String query(Model model) {
 		FormStudentQuery fsq = new FormStudentQuery();
