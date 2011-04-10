@@ -10,6 +10,11 @@
         <put-attribute name="menu" value="/WEB-INF/views/students/student_menu.jspx" />
     </definition>
     
+    <definition extends="students.default" name="students/gethere">
+        <put-attribute name="body" value="/WEB-INF/views/students/gethere.jspx"/>
+        <put-attribute name="menu" value="/WEB-INF/views/students/student_menu.jspx" />
+    </definition>
+    
 	<definition extends="students.default" name="students/show">
         <put-attribute name="body" value="/WEB-INF/views/students/show.jspx"/>
         <put-attribute name="menu" value="/WEB-INF/views/students/student_menu.jspx" />

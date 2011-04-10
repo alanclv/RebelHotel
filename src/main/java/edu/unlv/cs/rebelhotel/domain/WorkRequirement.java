@@ -25,8 +25,8 @@ public class WorkRequirement {
 
     private boolean milestone;
     
-    @ManyToOne
-    private Major major;
+   /* @ManyToOne
+    private Major major;*/
     
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
@@ -36,7 +36,7 @@ public class WorkRequirement {
     	WorkRequirement wr = new WorkRequirement();
     	wr.setHours(wt.getHours());
     	wr.setName(wt.getName());
-    	wr.setMajor(major);
+    	//wr.setMajor(major);
     	return wr;
     }
 }
