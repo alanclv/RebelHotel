@@ -68,7 +68,7 @@ public class Student {
     @DateTimeFormat(style = "S-")
     private Date lastModified;
 
-    @OneToOne(optional = false, cascade= { CascadeType.PERSIST, CascadeType.REMOVE } )
+    @OneToOne(optional = false, cascade= {CascadeType.REMOVE } )
     private UserAccount userAccount;
     
     @PreUpdate
@@ -86,6 +86,7 @@ public class Student {
     	} catch(EmptyResultDataAccessException e) {
 			RandomPasswordGenerator rpg = new RandomPasswordGenerator();
 			UserAccount userAccount = new UserAccount(this,rpg.generateRandomPassword());
+			userAccount.persist();
 			setUserAccount(userAccount);
     	}
     	updateLastModified();

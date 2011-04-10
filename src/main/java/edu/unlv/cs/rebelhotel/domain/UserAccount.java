@@ -23,7 +23,6 @@ public class UserAccount {
     @Column(unique = true)
     private String userId;
 
-    @Column(unique = true)
     private String email = "default@mail.com";
 
     private transient MessageDigestPasswordEncoder passwordEncoder;
