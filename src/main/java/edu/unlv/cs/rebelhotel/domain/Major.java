@@ -1,5 +1,6 @@
 package edu.unlv.cs.rebelhotel.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
@@ -11,23 +12,17 @@ import edu.unlv.cs.rebelhotel.domain.Term;
 @RooJavaBean
 @RooEntity
 public class Major {
-	private boolean reachedMilestone;
-	
 	@NotNull
 	private String degreeCode;
 
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.MERGE})
     private Term catalogTerm;
 
-	@Deprecated
-	private boolean completed_work_requirements = false;
-	
 	public Major(){}
 	
 	public Major(String degreeCode, Term catalogTerm) {
 		this.degreeCode = degreeCode;
 		this.catalogTerm = catalogTerm;
-		this.reachedMilestone = false;
 	}
 	
     public String toString() {

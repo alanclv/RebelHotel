@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 import java.util.Set;
 import java.util.HashSet;
 import javax.persistence.CascadeType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -49,13 +50,13 @@ public class Student {
 
     private String lastName;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Major> majors = new HashSet<Major>();
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.MERGE})
     private Term admitTerm;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE})
     private Term gradTerm;
 
     @OneToMany(cascade = CascadeType.ALL)
