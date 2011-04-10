@@ -5,13 +5,10 @@ package edu.unlv.cs.rebelhotel.web;
 
 import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Term;
-import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
-import edu.unlv.cs.rebelhotel.domain.enums.Departments;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
-import java.util.Arrays;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -92,6 +89,7 @@ privileged aspect MajorController_Roo_Controller {
         return Term.findAllTerms();
     }
     
+<<<<<<< HEAD
     @ModelAttribute("workrequirements")
     public Collection<WorkRequirement> MajorController.populateWorkRequirements() {
         return WorkRequirement.findAllWorkRequirements();
@@ -104,6 +102,10 @@ privileged aspect MajorController_Roo_Controller {
     
     String MajorController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
         String enc = request.getCharacterEncoding();
+=======
+    String MajorController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+        String enc = httpServletRequest.getCharacterEncoding();
+>>>>>>> 17a733858fae4f1ee8a4b4079c3f66e55b437353
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }

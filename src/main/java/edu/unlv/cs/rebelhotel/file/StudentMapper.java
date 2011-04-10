@@ -1,5 +1,6 @@
 package edu.unlv.cs.rebelhotel.file;
 
+<<<<<<< HEAD
 import java.util.List;
 import java.util.Set;
 
@@ -23,8 +24,18 @@ public class StudentMapper {
 		this.workRequirementService = workRequirementService;
 	}
 
+=======
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Component;
+import edu.unlv.cs.rebelhotel.domain.Student;
+import edu.unlv.cs.rebelhotel.domain.UserAccount;
+import edu.unlv.cs.rebelhotel.file.RandomPasswordGenerator;
+
+@Component
+public class StudentMapper {
+>>>>>>> 17a733858fae4f1ee8a4b4079c3f66e55b437353
 	public Student findOrReplace(FileStudent fileStudent){
-		Student student = findStudent(fileStudent);
+		Student student = existingOrNewStudent(fileStudent);
 		student.setUserId(fileStudent.getStudentId());
 		student.setFirstName(fileStudent.getFirstName());
 		student.setLastName(fileStudent.getLastName());
@@ -32,6 +43,7 @@ public class StudentMapper {
 		student.setEmail(fileStudent.getEmail());
 		student.setGradTerm(fileStudent.getGradTerm());
 		student.setAdmitTerm(fileStudent.getAdmitTerm());
+<<<<<<< HEAD
 
 		/* if both major columns are populated, and there is only one requirement term,
 		 * then can we assume that it is the same for both majors? I suppose...but what if
@@ -57,22 +69,38 @@ public class StudentMapper {
 		} else {
 			student_account.persist();
 		}
+=======
+		student.updateMajors(fileStudent.getMajors());
+		student.setCodeOfConductSigned(false);
+
+		UserAccount studentAccount = existingOrNewAccount(fileStudent);
+		student.setUserAccount(studentAccount);
+>>>>>>> 17a733858fae4f1ee8a4b4079c3f66e55b437353
 		
-		student.setUserAccount(student_account);
 		return student;
 	}
 
-	public Student findStudent(FileStudent fileStudent) {
-		TypedQuery<Student> q = Student.findStudentsByUserIdEquals(fileStudent.getStudentId());
-		List<Student> domainStudent = q.getResultList();
-		if (0 == domainStudent.size()) {
-			return new Student();
-		} else if (1 < domainStudent.size()){
-			throw new IllegalArgumentException("There exists multiple entries of ID: " + fileStudent.getStudentId());
-		} else {
-			Student[] astudent = null;
-			astudent = domainStudent.toArray(astudent);
-			return astudent[0];
+	private Student existingOrNewStudent(FileStudent fileStudent) {
+		Student student;
+		try {
+			student = Student.findStudentsByUserIdEquals(fileStudent.getStudentId()).getSingleResult();
+			return student;
+		} catch(EmptyResultDataAccessException e) {
+			student = new Student();
 		}
+		return student;
+	}
+	
+	private UserAccount existingOrNewAccount(FileStudent fileStudent) {
+		UserAccount studentAccount;
+		try {
+			studentAccount = UserAccount.findUserAccountsByUserId(fileStudent.getStudentId()).getSingleResult();
+			return studentAccount;
+		} catch(EmptyResultDataAccessException e) {
+			RandomPasswordGenerator rpg = new RandomPasswordGenerator();
+			studentAccount = new UserAccount(fileStudent,rpg.generateRandomPassword());
+			studentAccount.persist();
+		}
+		return studentAccount;
 	}
 }

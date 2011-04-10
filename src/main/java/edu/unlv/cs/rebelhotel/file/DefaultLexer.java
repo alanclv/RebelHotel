@@ -15,6 +15,10 @@ public class DefaultLexer implements Lexer{
 	public List<List<String>> tokenize(Reader reader) throws IOException{
 		List<List<String>> lines = new ArrayList<List<String>>();
 		CSVReader csvreader = new CSVReader(reader, ',', '"', 1);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 17a733858fae4f1ee8a4b4079c3f66e55b437353
 		
 		String [] nextLine;
 		nextLine = csvreader.readNext();

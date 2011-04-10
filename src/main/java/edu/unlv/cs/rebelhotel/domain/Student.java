@@ -8,19 +8,25 @@ import javax.persistence.Column;
 import javax.validation.constraints.Size;
 import java.util.Set;
 import java.util.HashSet;
-import javax.persistence.ManyToMany;
 import javax.persistence.CascadeType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.Transient;
+import javax.persistence.TypedQuery;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
+import edu.unlv.cs.rebelhotel.file.RandomPasswordGenerator;
+
 import java.util.Date;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @RooJavaBean
@@ -44,13 +50,13 @@ public class Student {
 
     private String lastName;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Major> majors = new HashSet<Major>();
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE})
     private Term admitTerm;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE})
     private Term gradTerm;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -62,13 +68,27 @@ public class Student {
     @DateTimeFormat(style = "S-")
     private Date lastModified;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, cascade= { CascadeType.PERSIST, CascadeType.REMOVE } )
     private UserAccount userAccount;
     
     @PreUpdate
-    @PrePersist
-    public void onUpdate() {
+    public void updateLastModified() {
     	lastModified = new Date();
+    }
+    
+    // THIS IS FOR THE STUDENT CREATE FORM
+    @PrePersist
+    public void initUserAccount(){
+    	TypedQuery<UserAccount> findUserAccountsByUserId = UserAccount.findUserAccountsByUserId(getUserId());
+    	try {
+    		UserAccount userAccount = findUserAccountsByUserId.getSingleResult();
+    		setUserAccount(userAccount);
+    	} catch(EmptyResultDataAccessException e) {
+			RandomPasswordGenerator rpg = new RandomPasswordGenerator();
+			UserAccount userAccount = new UserAccount(this,rpg.generateRandomPassword());
+			setUserAccount(userAccount);
+    	}
+    	updateLastModified();
     }
 
     public String toString() {
@@ -92,4 +112,42 @@ public class Student {
     	}
     	return name;
     }
+    
+    public void updateMajors(Set<Major> newMajors){
+    	if (isNewStudent()) {
+    		addMajors(newMajors);
+    	} else {
+    		updateMajorsAsExistingStudent(newMajors);
+    	}
+    }
+    
+    private void updateMajorsAsExistingStudent(Set<Major> newMajors) {
+		for (Major newMajor : newMajors) {
+			if (!hasDeclaredMajor(newMajor)) {
+				addMajor(newMajor);
+			}
+		}
+	}
+
+	private boolean hasDeclaredMajor(Major newMajor) {
+		return getMajors().contains(newMajor);
+	}
+
+	private void addMajor(Major major) {
+		getMajors().add(major);
+	}
+
+	private void addMajors(Set<Major> majors) {
+		getMajors().addAll(majors);
+	}
+
+	/**
+     * If the student has an empty set of majors, that means they are new to the system.
+     * 
+     * @return
+     */
+    @Transient
+	public boolean isNewStudent() {
+		return this.majors.isEmpty();
+	}
 }

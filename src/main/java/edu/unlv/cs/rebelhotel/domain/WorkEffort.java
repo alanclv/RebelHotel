@@ -23,19 +23,16 @@ import edu.unlv.cs.rebelhotel.domain.enums.Validation;
 import edu.unlv.cs.rebelhotel.domain.enums.PayStatus;
 
 import java.util.Set;
-import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
+import edu.unlv.cs.rebelhotel.domain.CatalogRequirement;
 
 import java.util.HashSet;
 import javax.persistence.ManyToMany;
-import javax.persistence.CascadeType;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 
 @RooJavaBean
 @RooToString
 @RooEntity(finders = { "findWorkEffortsByStudentEquals" })
 public class WorkEffort {
-    private static final Logger LOG = LoggerFactory.getLogger("audit");
+    //private static final Logger LOG = LoggerFactory.getLogger("audit");
 	
     @NotNull
     @ManyToOne
@@ -66,34 +63,20 @@ public class WorkEffort {
     @Embedded
     private WorkEffortDuration duration;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
+    @ManyToMany
+    private Set<CatalogRequirement> catalogRequirements = new HashSet<CatalogRequirement>();
     
     public String toString() {
         StringBuilder sb = new StringBuilder();
+<<<<<<< HEAD
         sb.append(getWorkPosition()).append('\n');
         sb.append("at").append(getEmployer().getName()).append('\n');
         //sb.append(getDuration()).append("\n\n");
+=======
+        sb.append("Position: ").append(getWorkPosition()).append("\n");
+        sb.append("At: ").append(getEmployer().getName()).append("\n");
+        sb.append("Duration: ").append(getDuration()).append("\n").append("\n");
+>>>>>>> 17a733858fae4f1ee8a4b4079c3f66e55b437353
         return sb.toString();
-    }
-    
-    @PreUpdate
-    @PrePersist
-    public void audit() {
-    	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    	boolean hasAuthentication = null != authentication;
-    	String username = "";
-		if (hasAuthentication) {
-			Object principal = authentication.getPrincipal();
-			if (principal instanceof UserDetails) {
-				username = ((UserDetails) principal).getUsername();
-			} else {
-				username = principal.toString();
-			}
-		}
-		
-		String studentId = student.getUserId();
-		
-		LOG.info("User {} updated work effort {} for student {}.", new Object[]{username, this.toString(), studentId});
     }
 }

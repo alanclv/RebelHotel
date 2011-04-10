@@ -98,15 +98,31 @@ privileged aspect TermController_Roo_Controller {
     }
     
     @RequestMapping(params = { "find=BySemesterAndTermYearEquals", "form" }, method = RequestMethod.GET)
+<<<<<<< HEAD
     public String TermController.findTermsBySemesterAndTermYearEqualsForm(Model model) {
         model.addAttribute("semesters", java.util.Arrays.asList(Semester.class.getEnumConstants()));
+=======
+    public String TermController.findTermsBySemesterAndTermYearEqualsForm(Model uiModel) {
+        uiModel.addAttribute("semesters", java.util.Arrays.asList(Semester.class.getEnumConstants()));
+>>>>>>> 17a733858fae4f1ee8a4b4079c3f66e55b437353
         return "terms/findTermsBySemesterAndTermYearEquals";
     }
     
     @RequestMapping(params = "find=BySemesterAndTermYearEquals", method = RequestMethod.GET)
+<<<<<<< HEAD
     public String TermController.findTermsBySemesterAndTermYearEquals(@RequestParam("semester") Semester semester, @RequestParam("termYear") Integer termYear, Model model) {
         model.addAttribute("terms", Term.findTermsBySemesterAndTermYearEquals(semester, termYear).getResultList());
         return "terms/list";
+=======
+    public String TermController.findTermsBySemesterAndTermYearEquals(@RequestParam("semester") Semester semester, @RequestParam("termYear") Integer termYear, Model uiModel) {
+        uiModel.addAttribute("terms", Term.findTermsBySemesterAndTermYearEquals(semester, termYear).getResultList());
+        return "terms/list";
+    }
+    
+    @ModelAttribute("terms")
+    public Collection<Term> TermController.populateTerms() {
+        return Term.findAllTerms();
+>>>>>>> 17a733858fae4f1ee8a4b4079c3f66e55b437353
     }
     
     @ModelAttribute("semesters")

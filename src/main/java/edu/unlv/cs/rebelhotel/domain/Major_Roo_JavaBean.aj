@@ -4,34 +4,16 @@
 package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
-import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
-import edu.unlv.cs.rebelhotel.domain.enums.Departments;
-import java.util.Set;
+import java.lang.String;
 
 privileged aspect Major_Roo_JavaBean {
     
-    public Set<WorkRequirement> Major.getWorkRequirements() {
-        return this.workRequirements;
+    public String Major.getDegreeCode() {
+        return this.degreeCode;
     }
     
-    public void Major.setWorkRequirements(Set<WorkRequirement> workRequirements) {
-        this.workRequirements = workRequirements;
-    }
-    
-    public boolean Major.isReachedMilestone() {
-        return this.reachedMilestone;
-    }
-    
-    public void Major.setReachedMilestone(boolean reachedMilestone) {
-        this.reachedMilestone = reachedMilestone;
-    }
-    
-    public Departments Major.getDepartment() {
-        return this.department;
-    }
-    
-    public void Major.setDepartment(Departments department) {
-        this.department = department;
+    public void Major.setDegreeCode(String degreeCode) {
+        this.degreeCode = degreeCode;
     }
     
     public Term Major.getCatalogTerm() {

@@ -7,7 +7,6 @@ import java.util.HashSet;
 
 import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Term;
-import edu.unlv.cs.rebelhotel.file.Line;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
 
@@ -21,7 +20,11 @@ public class FileStudent {
 	private String email;
 	private Set<Major> majors = new HashSet<Major>();
 	private Term admitTerm;
+<<<<<<< HEAD
 	private Term gradTerm; // are we going to put gradTerm in Majors?
+=======
+	private Term gradTerm;
+>>>>>>> 17a733858fae4f1ee8a4b4079c3f66e55b437353
 
 	public Set<FileStudent> convert(Collection<List<Line>> student) {
 		Set<FileStudent> fileStudents = new HashSet<FileStudent>();
