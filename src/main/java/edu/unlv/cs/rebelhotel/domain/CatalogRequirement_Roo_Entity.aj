@@ -73,9 +73,6 @@ privileged aspect CatalogRequirement_Roo_Entity {
     }
     
     @Transactional
-<<<<<<< HEAD
-    public WorkRequirement WorkRequirement.merge() {
-=======
     public void CatalogRequirement.clear() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.clear();
@@ -83,7 +80,6 @@ privileged aspect CatalogRequirement_Roo_Entity {
     
     @Transactional
     public CatalogRequirement CatalogRequirement.merge() {
->>>>>>> 17a733858fae4f1ee8a4b4079c3f66e55b437353
         if (this.entityManager == null) this.entityManager = entityManager();
         CatalogRequirement merged = this.entityManager.merge(this);
         this.entityManager.flush();

@@ -30,9 +30,6 @@ public class UserAccount {
 
     @NotNull
     private String password;
-
-    @NotNull
-    private String email;
     
     @Enumerated(EnumType.STRING)
     private UserGroup userGroup;

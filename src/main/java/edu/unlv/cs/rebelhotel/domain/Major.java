@@ -20,15 +20,6 @@ public class Major {
 	
 	private boolean completed_work_requirements;
 	
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-        //sb.append("WorkRequirements: ").append(getWorkRequirements() == null ? "null" : getWorkRequirements().size()).append(", ");
-        //sb.append("ReachedMilestone: ").append(isReachedMilestone()).append(", ");
-        sb.append(getDepartment());//.append(" ");
-        //sb.append("CatalogTerm: ").append(getCatalogTerm());
-        return sb.toString();
-	}
-
 	public Major(){}
 	
 	public Major(String degreeCode, Term catalogTerm) {

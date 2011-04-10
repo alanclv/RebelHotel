@@ -409,7 +409,6 @@
             <artifactId>spring-security-taglibs</artifactId>
             <version>${spring-security.version}</version>
         </dependency>
-<<<<<<< HEAD
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -434,13 +433,7 @@
             <groupId>net.sourceforge.jtds</groupId>
             <artifactId>jtds</artifactId>
             <version>1.2.4</version>
-=======
-    <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>1.8.0.10</version>
->>>>>>> 17a733858fae4f1ee8a4b4079c3f66e55b437353
-        </dependency>
+            </dependency>
     </dependencies>
 	<build>
 		<plugins>

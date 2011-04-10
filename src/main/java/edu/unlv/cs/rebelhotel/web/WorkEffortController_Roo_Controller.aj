@@ -65,16 +65,10 @@ privileged aspect WorkEffortController_Roo_Controller {
     public java.util.Collection<Student> WorkEffortController.populateStudents() {
         return Student.findAllStudents();
     }
-    
-<<<<<<< HEAD
-    @ModelAttribute("workrequirements")
-    public Collection<WorkRequirement> WorkEffortController.populateWorkRequirements() {
-        return WorkRequirement.findAllWorkRequirements();
-=======
+
     @ModelAttribute("workefforts")
     public java.util.Collection<WorkEffort> WorkEffortController.populateWorkEfforts() {
         return WorkEffort.findAllWorkEfforts();
->>>>>>> 17a733858fae4f1ee8a4b4079c3f66e55b437353
     }
     
     @ModelAttribute("paystatuses")

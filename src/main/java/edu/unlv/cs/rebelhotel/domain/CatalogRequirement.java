@@ -24,12 +24,4 @@ public class CatalogRequirement {
     private Integer totalRelatedHoursNeeded;
     
     public CatalogRequirement(){}
-    
-    /*public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Degree: ").append(getDegreeCodePrefix()).append(" ").append(getName());
-        sb.append("TotalHoursNeeded: ").append(getTotalHoursNeeded()).append(", ");
-        sb.append("Term: ").append(getTerm());
-        return sb.toString();
-    }*/
 }

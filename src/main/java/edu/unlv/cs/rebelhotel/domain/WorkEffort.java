@@ -1,13 +1,8 @@
 package edu.unlv.cs.rebelhotel.domain;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
 import javax.validation.constraints.NotNull;
@@ -68,15 +63,9 @@ public class WorkEffort {
     
     public String toString() {
         StringBuilder sb = new StringBuilder();
-<<<<<<< HEAD
-        sb.append(getWorkPosition()).append('\n');
-        sb.append("at").append(getEmployer().getName()).append('\n');
-        //sb.append(getDuration()).append("\n\n");
-=======
         sb.append("Position: ").append(getWorkPosition()).append("\n");
         sb.append("At: ").append(getEmployer().getName()).append("\n");
         sb.append("Duration: ").append(getDuration()).append("\n").append("\n");
->>>>>>> 17a733858fae4f1ee8a4b4079c3f66e55b437353
         return sb.toString();
     }
 }
