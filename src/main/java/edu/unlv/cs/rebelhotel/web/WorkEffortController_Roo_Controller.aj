@@ -11,14 +11,12 @@ import edu.unlv.cs.rebelhotel.domain.enums.Verification;
 import edu.unlv.cs.rebelhotel.domain.enums.VerificationType;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
-import java.lang.Long;
 import java.lang.String;
 import java.util.Arrays;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,13 +24,6 @@ import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
 privileged aspect WorkEffortController_Roo_Controller {
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String WorkEffortController.show(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("workeffort", WorkEffort.findWorkEffort(id));
-        model.addAttribute("itemId", id);
-        return "workefforts/show";
-    }
     
     @RequestMapping(method = RequestMethod.GET)
     public String WorkEffortController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
@@ -47,22 +38,9 @@ privileged aspect WorkEffortController_Roo_Controller {
         return "workefforts/list";
     }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String WorkEffortController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
-        WorkEffort.findWorkEffort(id).remove();
-        model.addAttribute("page", (page == null) ? "1" : page.toString());
-        model.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/workefforts?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
-    }
-    
     @ModelAttribute("students")
-    public java.util.Collection<Student> WorkEffortController.populateStudents() {
+    public Collection<Student> WorkEffortController.populateStudents() {
         return Student.findAllStudents();
-    }
-
-    @ModelAttribute("workefforts")
-    public java.util.Collection<WorkEffort> WorkEffortController.populateWorkEfforts() {
-        return WorkEffort.findAllWorkEfforts();
     }
     
     @ModelAttribute("paystatuses")

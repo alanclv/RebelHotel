@@ -20,7 +20,7 @@ import javax.persistence.TypedQuery;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
-import edu.unlv.cs.rebelhotel.file.RandomPasswordGenerator;
+import edu.unlv.cs.rebelhotel.form.FormStudent;
 
 import java.util.Date;
 import javax.persistence.Temporal;
@@ -38,11 +38,6 @@ public class Student {
     @Column(unique = true)
     private String userId;
 
-    @NotNull
-    @Size(min = 5)
-    private String email = "default";
-
-    @NotNull
     @Size(min = 2)
     private String firstName;
 
@@ -151,4 +146,24 @@ public class Student {
 	public boolean isNewStudent() {
 		return this.majors.isEmpty();
 	}
+    
+    public String getEmail() {
+    	return userAccount.getEmail();
+    }
+    
+    public void setEmail(String email) {
+    	userAccount.setEmail(email);
+    	userAccount.merge();
+    }
+    
+    public void copyFromFormStudent(FormStudent formStudent) {
+    	setUserId(formStudent.getUserId());
+    	setEmail(formStudent.getEmail());
+    	setFirstName(formStudent.getFirstName());
+    	setMiddleName(formStudent.getMiddleName());
+    	setLastName(formStudent.getLastName());
+    	setAdmitTerm(formStudent.getAdmitTerm());
+    	setGradTerm(formStudent.getGradTerm());
+    	setCodeOfConductSigned(formStudent.getCodeOfConductSigned());
+    }
 }

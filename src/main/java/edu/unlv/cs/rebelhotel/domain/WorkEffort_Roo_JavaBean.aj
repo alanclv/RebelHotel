@@ -3,7 +3,6 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
-
 import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Supervisor;
@@ -13,7 +12,6 @@ import edu.unlv.cs.rebelhotel.domain.enums.Validation;
 import edu.unlv.cs.rebelhotel.domain.enums.Verification;
 import edu.unlv.cs.rebelhotel.domain.enums.VerificationType;
 import java.lang.String;
-import java.util.Set;
 
 privileged aspect WorkEffort_Roo_JavaBean {
     
