@@ -3,7 +3,7 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
-import edu.unlv.cs.rebelhotel.domain.CatalogRequirement;
+
 import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Supervisor;
@@ -95,14 +95,6 @@ privileged aspect WorkEffort_Roo_JavaBean {
     
     public void WorkEffort.setDuration(WorkEffortDuration duration) {
         this.duration = duration;
-    }
-    
-    public Set<CatalogRequirement> WorkEffort.getCatalogRequirements() {
-        return this.catalogRequirements;
-    }
-    
-    public void WorkEffort.setCatalogRequirements(Set<CatalogRequirement> catalogRequirements) {
-        this.catalogRequirements = catalogRequirements;
     }
     
 }
