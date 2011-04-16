@@ -8,8 +8,7 @@
         <field:display field="firstName" id="s_edu_unlv_cs_rebelhotel_domain_Student_firstName" object="${student}" z="0mteuHH5jh4oX0nAbq2YkApp37c="/>
         <field:display field="middleName" id="s_edu_unlv_cs_rebelhotel_domain_Student_middleName" object="${student}" z="swWBz8PPXJ0GLK8nOkvs+ysHRfM="/>
         <field:display field="lastName" id="s_edu_unlv_cs_rebelhotel_domain_Student_lastName" object="${student}" z="MV/3u5u5Y//qbKb5pE4p3PXgbDY="/>
-<<<<<<< HEAD
-		<field:display field="email" id="s_edu_unlv_cs_rebelhotel_domain_Student_userAccount" object="${student.userAccount}" z="C7f59YScd+k6Iy5qzVpdyqcQt7k="/>
+		<field:display field="email" id="s_edu_unlv_cs_rebelhotel_domain_Student_userAccount" object="${student.userAccount}" z="user-managed"/>
 		<field:display field="userId" id="s_edu_unlv_cs_rebelhotel_domain_Student_userId" object="${student}" z="LZIvQBCfN6MZTqMoCVgKqr+ccDg="/>
        	<br/>
 		<br/>
@@ -23,18 +22,6 @@
     	<field:display date="true" dateTimePattern="${student_lastmodified_date_format}" field="lastModified" id="s_edu_unlv_cs_rebelhotel_domain_Student_lastModified" object="${student}" z="i9OrOmdzt+/d35aZGKjTY5giRJU="/>
         
        <div class="quicklinks">
-=======
-        <field:display field="majors" id="s_edu_unlv_cs_rebelhotel_domain_Student_majors" object="${student}" z="e2EMdvNlgUpZB8J/T+lLcsRqPDg="/>
-        <field:display field="admitTerm" id="s_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" object="${student}" z="6tJ5tkyGsDQH3mlfM1wmlzichRU="/>
-        <field:display field="gradTerm" id="s_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" object="${student}" z="GVBUTuxqCefJz3zKqOn+kmB04SU="/>
-        <field:display field="workEffort" id="s_edu_unlv_cs_rebelhotel_domain_Student_workEffort" object="${student}" z="3B3iTKWLOZDjBTNHxFpZlQNkpbc="/>
-        <field:display field="codeOfConductSigned" id="s_edu_unlv_cs_rebelhotel_domain_Student_codeOfConductSigned" object="${student}" z="bdzExXPCeUL8sy6mD7XFCvADpVM="/>
-        <field:display date="true" dateTimePattern="${student_lastmodified_date_format}" field="lastModified" id="s_edu_unlv_cs_rebelhotel_domain_Student_lastModified" object="${student}" z="i9OrOmdzt+/d35aZGKjTY5giRJU="/>
-        <field:display field="userAccount" id="s_edu_unlv_cs_rebelhotel_domain_Student_userAccount" object="${student}" z="C7f59YScd+k6Iy5qzVpdyqcQt7k="/>
-    	
-    
-    	<div class="quicklinks">
->>>>>>> 3ec2e315156c670f098d6739bc77f3fc2567c61d
         	<!-- For creating a work effort from the student page -->
         	<spring:url value="/resources/images/rh-pick.png" var="create_workeffort_image_url"/>
         	<spring:message code="create_workeffort_label" var="workeffort_title"/>

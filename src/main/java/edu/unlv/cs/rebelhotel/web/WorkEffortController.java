@@ -42,14 +42,6 @@ public class WorkEffortController {
 		this.workEffortValidator = workEffortValidator;
 	}
 	
-	@PreAuthorize("hasRole('ROLE_STUDENT')") // only students should have a list of work efforts ... though a different error than "access denied" might be desirable to admins
-	@RequestMapping(value = "/mywork", method = RequestMethod.GET)
-	public String listPersonalWork(Model model) {
-		Student student = userInformation.getStudent();
-		List<WorkEffort> workEfforts = WorkEffort.findWorkEffortsByStudentEquals(student).getResultList();
-		model.addAttribute("workefforts", workEfforts);
-		return "workefforts/mywork";
-	}
 	
 	// NOTE : the params string should not be equivalent to any of the fields in the form
 	// otherwise the validator (?) will assume the params value is set to null (?) ... very annoying bug

@@ -67,10 +67,11 @@ public class Student {
     private UserAccount userAccount;
     
     @PreUpdate
+    @PrePersist
     public void updateLastModified() {
     	lastModified = new Date();
     }
-    
+/*    
     // THIS IS FOR THE STUDENT CREATE FORM
     @PrePersist
     public void initUserAccount(){
@@ -86,7 +87,7 @@ public class Student {
     	}
     	updateLastModified();
     }
-
+*/
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("(" + userId + ")");

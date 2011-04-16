@@ -78,6 +78,9 @@ public class WorkEffort {
     @Embedded
     private WorkEffortDuration duration;
     
+    @ManyToMany
+    private Set<CatalogRequirement> catalogRequirements = new HashSet<CatalogRequirement>();
+    
     @PrePersist
     public void persistHours() {
     	Set<Major> majors = student.getMajors();
