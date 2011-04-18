@@ -17,12 +17,8 @@
             <menu:item id="i_term_new" messageCode="global_menu_new" url="/terms?form" z="wgiKkyRDO0HpHhgEDihRQzUhP3k="/>
         	<menu:item id="i_term_list" messageCode="global_menu_list" url="/terms?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ev5ds/cpGL+OtBUv9Kd6x/Ioqak="/>
         	<menu:item id="i_term_generate" url="/terms?generate"/>
-<<<<<<< HEAD
-        
-            <menu:item id="fi_term_semester" messageCode="global_menu_find" url="/terms?find=BySemester&amp;form" z="N0dnziCmUVvr4CvPA/1i8qxFtV0="/>
-=======
+
         <menu:item id="fi_term_semester" messageCode="global_menu_find" url="/terms?find=BySemester&amp;form" z="N0dnziCmUVvr4CvPA/1i8qxFtV0="/>
->>>>>>> 17a733858fae4f1ee8a4b4079c3f66e55b437353
             <menu:item id="fi_term_semesterandtermyearequals" messageCode="global_menu_find" url="/terms?find=BySemesterAndTermYearEquals&amp;form" z="ZvutSn3UsA2jKyZo1S+8ibDjbpE="/>
             </menu:category>
     	<menu:category id="c_workrequirement" z="BRAzcRCVcdWWTNOQXNpMuQUdr2k=">
@@ -35,10 +31,11 @@
         	<menu:item id="i_workeffort_new" messageCode="global_menu_new" url="/workefforts?form" z="dvadJbbt0m1m8IYnQwC5Nfv3NQs="/>
         </menu:category>
     	<menu:category id="c_student" z="VA/5j81jpINYUQQoxpb8LUYLpWk=">
-            <menu:item id="i_student_new" messageCode="global_menu_new" url="/students?form" z="xCEWOyB2txSvWmV9Fxwd+H7BxCM="/>
+            
 			<menu:item id="i_student_list" messageCode="global_menu_list" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" z="PSLnBxZ6Z7hXmOglFNorqDjA2H0="/>
          
-        </menu:category>
+        
+            </menu:category>
    		<menu:category id="c_useraccount" z="Yb8cyPB5AwOfYXCcrEpGXNT9C+k=">
            	<menu:item id="i_useraccount_new" messageCode="global_menu_new" url="/useraccounts?form" z="dm6iErpLQmgISoPCTS3yLiH8XFA="/>
        		<menu:item id="i_useraccount_list" messageCode="global_menu_list" url="/useraccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nijRCp2PPYuD2D3D7hljcdDK4vs="/>
@@ -80,6 +77,11 @@
         		<menu:item id="i_student_personal_work" url="/workefforts?mywork"/>
         	</menu:category>
         </security:authorize>
+
+    <menu:category id="c_catalogrequirement" z="ho/exCiE0c7JCs0Cimmsrjf7w+c=">
+            <menu:item id="i_catalogrequirement_new" messageCode="global_menu_new" url="/catalogrequirements?form" z="DTOPNfuJCl0dorRJoFQLrZQBN6A="/>
+        <menu:item id="i_catalogrequirement_list" messageCode="global_menu_list" url="/catalogrequirements?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/m393zLhMg4a2R8WGTnw5sDZ63k="/>
+        </menu:category>
     <menu:category id="c_randomvalidationbatch" z="fZBaVDTdGZEHi4ystPcpxzWeGFk=">
             <menu:item id="i_randomvalidationbatch_new" messageCode="global_menu_new" url="/randomvalidationbatches?form" z="ilQ2jLKc0Tn8zTBONmoFgwkNjJo="/>
         <menu:item id="i_randomvalidationbatch_list" messageCode="global_menu_list" url="/randomvalidationbatches?page=1&amp;size=${empty param.size ? 10 : param.size}" z="oWWX2TQAaKIKAQSQ6JWNetjMNtE="/>

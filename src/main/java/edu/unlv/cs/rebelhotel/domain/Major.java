@@ -18,7 +18,10 @@ public class Major {
 	@ManyToOne(cascade = {CascadeType.MERGE})
     private Term catalogTerm;
 	
-	private boolean completed_work_requirements;
+	@ManyToOne
+	private Student student;
+	
+	private Long totalHours; // calculated progress toward completion is stored here
 	
 	public Major(){}
 	

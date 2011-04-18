@@ -3,9 +3,19 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Major" items="${majors}" z="fEdErY6US/7ksuLsbF/QzVTcyGg=">
+<<<<<<< HEAD
         <table:table data="${majors}" id="l_edu_unlv_cs_rebelhotel_domain_Major" path="/majors" z="vWIsPbs+OidqDJF5mI9dxWo+ZHQ=">
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_catalogTerm" property="catalogTerm" z="mqyehFU0GGspMvAtev5xVj+FVDY="/>
         	<table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_degreeCode" property="degreeCode" z="kDDCTtIrK1bCDtDRRMOTMoV9TAE="/>
+=======
+        <table:table data="${majors}" id="l_edu_unlv_cs_rebelhotel_domain_Major" path="/majors" z="vWIsPbs+OidqDJF5mI9dxWo+ZHQ=">            
+                        
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_catalogTerm" property="catalogTerm" z="mqyehFU0GGspMvAtev5xVj+FVDY="/> 
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_degreeCode" property="degreeCode" z="kDDCTtIrK1bCDtDRRMOTMoV9TAE="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_degreeCode" property="degreeCode" z="kDDCTtIrK1bCDtDRRMOTMoV9TAE="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_totalHours" property="totalHours" z="VP7luK0pp+h0fucDR9ua6XWqscA="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_student" property="student" z="hFLmtWJF58A3jq49LT4GtJTOgls="/>
+>>>>>>> 94313d1da4654b7cff855584a78945231b5474e7
         </table:table>
     </page:list>
 </div>

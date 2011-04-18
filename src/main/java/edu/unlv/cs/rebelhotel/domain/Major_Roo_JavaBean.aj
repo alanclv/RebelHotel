@@ -3,7 +3,9 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
+import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Term;
+import java.lang.Long;
 import java.lang.String;
 
 privileged aspect Major_Roo_JavaBean {
@@ -24,12 +26,20 @@ privileged aspect Major_Roo_JavaBean {
         this.catalogTerm = catalogTerm;
     }
     
-    public boolean Major.isCompleted_work_requirements() {
-        return this.completed_work_requirements;
+    public Student Major.getStudent() {
+        return this.student;
     }
     
-    public void Major.setCompleted_work_requirements(boolean completed_work_requirements) {
-        this.completed_work_requirements = completed_work_requirements;
+    public void Major.setStudent(Student student) {
+        this.student = student;
+    }
+    
+    public Long Major.getTotalHours() {
+        return this.totalHours;
+    }
+    
+    public void Major.setTotalHours(Long totalHours) {
+        this.totalHours = totalHours;
     }
     
 }
