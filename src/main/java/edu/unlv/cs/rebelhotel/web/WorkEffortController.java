@@ -164,6 +164,20 @@ public class WorkEffortController {
         return "workefforts/show";
     }
 	
+/*
+ * ===================================
+ * Random Validation Controller Action
+ * Alan Chapman
+ * Last Updated: 4-18-11
+ * =================================== 
+*/
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
+	@RequestMapping(params = "random")
+	public String randomValidation(Model model) {
+		// empty controller body
+		return "workefforts/random_validation";
+	}
+	
 	void addDateTimeFormatPatterns(Model model) {
         model.addAttribute("workEffortDuration_startdate_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
         model.addAttribute("workEffortDuration_enddate_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));

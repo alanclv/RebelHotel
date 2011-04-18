@@ -11,6 +11,9 @@
 	<definition extends="workefforts.default" name="workefforts/show">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/show.jspx"/>
     </definition>
+    <definition extends="workefforts.default" name="workefforts/random_validation">
+        <put-attribute name="body" value="/WEB-INF/views/workefforts/random_validation.jspx"/>
+    </definition>
 	<definition extends="workefforts.default" name="workefforts/create">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/create.jspx"/>
     </definition>
