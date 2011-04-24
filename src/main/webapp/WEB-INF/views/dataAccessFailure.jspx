@@ -7,7 +7,7 @@
     <p>
       <spring:message code="error_dataaccessfailure_problemdescription" />
     </p>
-    <!-- Remove comment block to see database error details while in development. 
+    <!-- Remove comment block to see database error details while in development.--> 
     <c:if test="${not empty exception}">
       <p>
         <h4>
@@ -26,6 +26,6 @@
         </util:panel>
       </p>
     </c:if>
-    -->
+   
 </div>
 

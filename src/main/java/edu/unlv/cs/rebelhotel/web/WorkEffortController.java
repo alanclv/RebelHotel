@@ -10,7 +10,10 @@ import javax.validation.Valid;
 
 import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Student;
+import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
+import edu.unlv.cs.rebelhotel.domain.enums.Semester;
+import edu.unlv.cs.rebelhotel.service.RandomValidationService;
 import edu.unlv.cs.rebelhotel.service.UserInformation;
 import edu.unlv.cs.rebelhotel.validators.WorkEffortValidator;
 
@@ -36,12 +39,18 @@ public class WorkEffortController {
 	private UserInformation userInformation;
 	
 	@Autowired
+	private RandomValidationService randomValidationService;
+	
+	@Autowired
 	private WorkEffortValidator workEffortValidator;
-		
+	
 	public void setWorkEffortValidator(WorkEffortValidator workEffortValidator) {
 		this.workEffortValidator = workEffortValidator;
 	}
 	
+	public void setRandomValidationService (RandomValidationService randomValidationService) {
+		this.randomValidationService = randomValidationService;
+	}
 	
 	// NOTE : the params string should not be equivalent to any of the fields in the form
 	// otherwise the validator (?) will assume the params value is set to null (?) ... very annoying bug
@@ -130,12 +139,6 @@ public class WorkEffortController {
         return "workefforts/update";
     }
 	
-	/*@RequestMapping(value= "/{id}", params = "forstudent" , method=RequestMethod.GET)
-	public String randomValidation(@PathVariable("id") Long id, Model model) {
-	 
-		return "";
-	}*/
-	
 	
 	@PreAuthorize("hasRole('ROLE_USER')")
 	@RequestMapping(params = "mywork", method = RequestMethod.GET)
@@ -164,19 +167,35 @@ public class WorkEffortController {
         return "workefforts/show";
     }
 	
-/*
- * ===================================
- * Random Validation Controller Action
+/* ===================================
+ * Random Validation Controller Actions
  * Alan Chapman
- * Last Updated: 4-18-11
+ * Last Updated: 4-23-11
  * =================================== 
-*/
+ */
+	
+	@RequestMapping(params = "random", method = RequestMethod.GET)
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
-	@RequestMapping(params = "random")
-	public String randomValidation(Model model) {
-		// empty controller body
-		return "workefforts/random_validation";
+	public String randomValidationForm(Model model) {
+		List<Term> terms = Term.findAllTerms();
+		model.addAttribute("terms", terms);
+		return "workefforts/random_validation_form";
 	}
+	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
+	@RequestMapping(params = "random", method = RequestMethod.POST)
+	public String randomValidation(@RequestParam("semester") String semester, @RequestParam("year") Integer year, 
+			@RequestParam("sampleSize") Integer sampleSize, Model model) {
+	    
+	    Semester sem = randomValidationService.getSemester(semester);
+	    Term currentTerm = Term.findTermsBySemesterAndTermYearEquals(sem, year).getSingleResult();
+	    
+	    List<WorkEffort> randomResultList = randomValidationService.getRandomValidationList(currentTerm, sampleSize);
+		
+		model.addAttribute("randomResultList", randomResultList );
+		return "workefforts/random";
+	}
+	
 	
 	void addDateTimeFormatPatterns(Model model) {
         model.addAttribute("workEffortDuration_startdate_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));

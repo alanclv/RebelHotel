@@ -71,23 +71,7 @@ public class Student {
     public void updateLastModified() {
     	lastModified = new Date();
     }
-/*    
-    // THIS IS FOR THE STUDENT CREATE FORM
-    @PrePersist
-    public void initUserAccount(){
-    	TypedQuery<UserAccount> findUserAccountsByUserId = UserAccount.findUserAccountsByUserId(getUserId());
-    	try {
-    		UserAccount userAccount = findUserAccountsByUserId.getSingleResult();
-    		setUserAccount(userAccount);
-    	} catch(EmptyResultDataAccessException e) {
-			RandomPasswordGenerator rpg = new RandomPasswordGenerator();
-			UserAccount userAccount = new UserAccount(this,rpg.generateRandomPassword());
-			userAccount.persist();
-			setUserAccount(userAccount);
-    	}
-    	updateLastModified();
-    }
-*/
+    
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("(" + userId + ")");

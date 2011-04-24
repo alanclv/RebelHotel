@@ -7,6 +7,7 @@ import edu.unlv.cs.rebelhotel.domain.CatalogRequirement;
 import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Supervisor;
+import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkEffortDuration;
 import edu.unlv.cs.rebelhotel.domain.enums.PayStatus;
 import edu.unlv.cs.rebelhotel.domain.enums.Validation;
@@ -103,6 +104,14 @@ privileged aspect WorkEffort_Roo_JavaBean {
     
     public void WorkEffort.setCatalogRequirements(Set<CatalogRequirement> catalogRequirements) {
         this.catalogRequirements = catalogRequirements;
+    }
+    
+    public Term WorkEffort.getTermSubmitted() {
+        return this.termSubmitted;
+    }
+    
+    public void WorkEffort.setTermSubmitted(Term termSubmitted) {
+        this.termSubmitted = termSubmitted;
     }
     
 }
