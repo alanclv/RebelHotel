@@ -18,10 +18,6 @@
         <field:checkbox field="codeOfConductSigned" id="c_edu_unlv_cs_rebelhotel_domain_Student_codeOfConductSigned" z="MEsITWHN00P2YXp8sh6JT1t/sNM="/>
         <field:select field="userAccount" id="c_edu_unlv_cs_rebelhotel_domain_Student_userAccount" itemValue="id" items="${useraccounts}" path="/useraccounts" z="3LUtyqCBfzl9Rw/zN4w4nhC4UpU="/>
         <field:simple field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_Student_workEffort" messageCode="entity_reference_not_managed" messageCodeAttribute="Work Effort" z="B58jy23wuoHy9frp5p7hXVJy8oY="/>
-<<<<<<< HEAD
-=======
->>>>>>> 94313d1da4654b7cff855584a78945231b5474e7
->>>>>>> 9122700d157dcb5d5350718537097544f9fcba2a
         <field:datetime dateTimePattern="${student_lastmodified_date_format}" field="lastModified" id="c_edu_unlv_cs_rebelhotel_domain_Student_lastModified" z="ZMHAHqf5H7JDKfwDjRGzVqXTmuY="/>
     </form:update>
 </div>

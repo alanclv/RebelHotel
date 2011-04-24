@@ -17,25 +17,12 @@
         	</a>
         	</span>
         </div>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    	<field:display field="degreeCode" id="s_edu_unlv_cs_rebelhotel_domain_Major_degreeCode" object="${major}" z="1OTiDhvovx5468UbDcFyrHkvi6k="/>
-=======
->>>>>>> 9122700d157dcb5d5350718537097544f9fcba2a
-    
-    
+
     <!-- Not sure if this is still used -->
         <field:display field="degreeCode" id="s_edu_unlv_cs_rebelhotel_domain_Major_degreeCode" object="${major}" z="1OTiDhvovx5468UbDcFyrHkvi6k="/>
-        
-        <field:display field="catalogTerm" id="s_edu_unlv_cs_rebelhotel_domain_Major_catalogTerm" object="${major}" z="Fa3cH++zOLW+AQ9nnxUdjAshT/A="/>
-    	
+        <field:display field="catalogTerm" id="s_edu_unlv_cs_rebelhotel_domain_Major_catalogTerm" object="${major}" z="Fa3cH++zOLW+AQ9nnxUdjAshT/A="/>    	
     	<field:display field="degreeCode" id="s_edu_unlv_cs_rebelhotel_domain_Major_degreeCode" object="${major}" z="1OTiDhvovx5468UbDcFyrHkvi6k="/>
     	<field:display field="totalHours" id="s_edu_unlv_cs_rebelhotel_domain_Major_totalHours" object="${major}" z="K7ENRyZSTuXrY2sAJIj+YzCZUKo="/>
     	<field:display field="student" id="s_edu_unlv_cs_rebelhotel_domain_Major_student" object="${major}" z="H27ptDq6z+Zc9OgXpbziK3trp84="/>
-<<<<<<< HEAD
-=======
->>>>>>> 94313d1da4654b7cff855584a78945231b5474e7
->>>>>>> 9122700d157dcb5d5350718537097544f9fcba2a
     </page:show>
 </div>
