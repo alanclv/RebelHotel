@@ -34,7 +34,7 @@ public class Line {
 		if (tokens.size() != EXPECTED_SIZE){
 			throw new InvalidLineException("Invalid number of elements.");
 		}
-		if (hasAtLeastOneMajor(tokens.get(5))) {
+		if (!StringUtils.isBlank(tokens.get(5))) {
 			this.setStudentId(tokens.get(0));
 			this.setLastName(tokens.get(1));
 			this.setFirstName(tokens.get(2));
@@ -43,15 +43,15 @@ public class Line {
 	
 			Set<Major> majors = this.getMajors();
 			Major major;
-			if (shouldInclude(tokens.get(5))) {
+			if (!StringUtils.isBlank(tokens.get(5))) {
 				major = makeMajor(tokens.get(5),tokens.get(6));
 				majors.add(major);
 			}
-			if (shouldInclude(tokens.get(7))) {
+			if (!StringUtils.isBlank(tokens.get(7))) {
 				major = makeMajor(tokens.get(7),tokens.get(8));
 				majors.add(major);
 			}
-			if (shouldInclude(tokens.get(9))) {
+			if (!StringUtils.isBlank(tokens.get(9))) {
 				major = makeMajor(tokens.get(9),tokens.get(10));
 				majors.add(major);
 			}
@@ -63,14 +63,6 @@ public class Line {
 		}
 	}
 	
-	private boolean hasAtLeastOneMajor(String major1) {
-		return major1 == SPACE;
-	}
-	
-	private boolean shouldInclude(String major) {
-		return major == SPACE;
-	}
-
 	private Term createOrFindTerm(String yearAndTerm) {
 		if (yearAndTerm.equals(" ")){
 			throw new InvalidTokenException("Invalid Term:" + yearAndTerm);

@@ -70,8 +70,8 @@ public class Student {
     @PrePersist
     public void updateLastModified() {
     	lastModified = new Date();
-    }
-    
+    }    
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("(" + userId + ")");

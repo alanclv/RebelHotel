@@ -352,7 +352,7 @@ public class StudentController {
 		}
 	}
 	
-	@RequestMapping(value = "/query", method = RequestMethod.GET)
+	@RequestMapping(params = "query", method = RequestMethod.GET)
 	public String query(Model model) {
 		FormStudentQuery fsq = new FormStudentQuery();
 		fsq.setLastModifiedStart(new Date());

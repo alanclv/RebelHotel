@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -22,6 +23,7 @@ import javax.persistence.PostUpdate;
 import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
+
 import edu.unlv.cs.rebelhotel.domain.enums.Verification;
 import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Supervisor;
@@ -31,9 +33,11 @@ import edu.unlv.cs.rebelhotel.domain.enums.VerificationType;
 import javax.persistence.Enumerated;
 import edu.unlv.cs.rebelhotel.domain.enums.Validation;
 import edu.unlv.cs.rebelhotel.domain.enums.PayStatus;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+
 import java.util.HashSet;
 import javax.persistence.ManyToMany;
 
@@ -70,7 +74,7 @@ public class WorkEffort {
 
     @Embedded
     private WorkEffortDuration duration;
-
+    
     @ManyToMany
     private Set<CatalogRequirement> catalogRequirements = new HashSet<CatalogRequirement>();
 
